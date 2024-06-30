@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
   },
-  User: {
+  user: {
     type: mongoose.SchemaTypes.ObjectId,
     refer: "Auth",
   },

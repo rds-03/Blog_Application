@@ -15,7 +15,6 @@ const addCategory = async (req, res) => {
       const newCateg = new categoryModel({ title: category });
       const svectg = await newCateg.save();
       if (svectg) {
-        console.log(newCateg);
         return res
           .status(201)
           .json({ message: "category created sucessfully" });

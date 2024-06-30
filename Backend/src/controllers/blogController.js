@@ -17,7 +17,7 @@ const createblog = async (req, res) => {
         content: content,
         category: category,
         thumbnail: req.file.filename,
-        User: req.user._id,
+        user: req.user._id,
       });
       const svblog = await newBlog.save();
       if (svblog) {
@@ -33,14 +33,13 @@ const createblog = async (req, res) => {
   }
 };
 const getBlogById = async (req, res) => {
-  const { id } = req.params.id;
+  const id = req.params.id;
   try {
-    if (id) {
-      const id_blog = await blogModel.findById(id);
-      res.status(200).json(id_blog);
+    const idBlog = await blogModel.findById(id);
+    if (!idBlog) {
+      return res.status(404).json({ message: "Blog not found" });
     }
-
-    return res.status(400).json({ message: "All fields are required" });
+    return res.status(200).json(idBlog);
   } catch (error) {
     return res.status(400).json({ message: "Error" });
   }

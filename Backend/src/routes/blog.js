@@ -25,7 +25,7 @@ router.post("/users/register", userRegistration);
 router.post("/users/login", loginUser);
 
 //blog routes
-router.get("/allblogs", userRegistration, getallBlogs);
+router.get("/allblogs", userAuthenticated, getallBlogs);
 router.get("/getblog/:id", userAuthenticated, getBlogById);
 router.post(
   "/addblog",
